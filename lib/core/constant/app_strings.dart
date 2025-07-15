@@ -1,0 +1,8 @@
+class AppStrings {
+  static const String privacyPolicyMainContent = " There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words believable. It is a long established fact that reader will distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a moreIt is a long established fact that reader will distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more ";
+  static const String privacyPolicyFirstCondition = " The standard chunk of lorem Ipsum used since  1500s is reproduced below for those interested.";
+  static const String privacyPolicySecondCondition = ''' Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum. The point of using.''';
+  static const String privacyPolicyThirdCondition = " Lorem Ipsum is that it has a moreIt is a long established fact that reader will distracted.";
+  static const String privacyPolicyFourthCondition = "The point of using Lorem Ipsum is that it has a moreIt is a long established fact that reader will distracted.";
+  static const String privacyPolicyEnd = "It is a long established fact that reader distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a moreIt is a long established.";
+}
