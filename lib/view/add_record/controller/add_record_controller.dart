@@ -1,24 +1,25 @@
-
-import '../../../core/exports/ui_exports.dart';
+import 'package:get/get.dart';
 
 class AddRecordController extends GetxController {
- var selectedIndex = (-1).obs; // Observable variable for selected index
+ // Observable variable for selected index
+ var selectedIndex = (-1).obs;
 
+ // Method to update the selected index
  void selectButton(int index) {
-  selectedIndex.value = index; // Update the selected index
-}
+  selectedIndex.value = index;
+ }
+
+ // List of SVG paths
  final List<String> svgPaths = [
-  'assets/svgs/report.svg', // Path to your first SVG
-  'assets/svgs/prescription.svg', // Path to your second SVG
-  'assets/svgs/invoice.svg', // Path to your third SVG
- ];
- final List<String> TextPaths = [
-  'report', // Path to your first SVG
-  'prescription', // Path to your second SVG
-  'invoic', // Path to your third SVG
+  'assets/svgs/report.svg',
+  'assets/svgs/prescription.svg',
+  'assets/svgs/invoice.svg',
  ];
 
-void toggleIconPressed (){
-
-}
+ // List of text labels corresponding to SVGs
+ final List<String> textPaths = [
+  'Report',
+  'Prescription',
+  'Invoice', // Corrected spelling
+ ];
 }

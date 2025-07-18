@@ -2,7 +2,7 @@ import 'package:adv/core/exports/main_exports.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  runApp( MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
               useMaterial3: true,
             ),
             builder: (context, child) => responsiveBuilder(context, child,),
-            initialRoute: Routes.addRecord,
+            initialRoute: Routes.allRecord,
             getPages: appPages,
           );
         }

@@ -26,7 +26,7 @@ class DiagnosticsTestScreen extends StatelessWidget {
             textStyle: AppTextStyles.buttonText(context),
           ),
         ],
-      ),
+      ), ShadowIsTrue: null,
     );
   }
 

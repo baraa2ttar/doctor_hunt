@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+bool ShadowIsTrue = false ;
 class CustomBottomSheet {
-  static Future<T?> show<T>({required Widget child}) {
+  static Future<T?> show<T>({required Widget child,required ShadowIsTrue}) {
     return Get.bottomSheet<T>(
       Container(
 
@@ -22,8 +22,12 @@ class CustomBottomSheet {
         child: child,
       ),
       isScrollControlled: true,
+
       backgroundColor: Colors.transparent,
-      barrierColor: Colors.transparent,
+      barrierColor:
+      ShadowIsTrue == true ?
+      Colors.black
+           : Colors.transparent,
     );
   }
 }

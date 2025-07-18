@@ -11,5 +11,6 @@ class AppAssets{
   static String chatIcon = '$rootSvg/chat.svg';
   static String heartIcon = '$rootSvg/heart.svg';
   static String homeIcon = '$rootSvg/home.svg';
+  static String medicalIcon= '$rootSvg/medicalIcon.svg';
 
 }
