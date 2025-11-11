@@ -1,7 +1,4 @@
-import 'package:adv/core/constant/app_colors.dart';
-import 'package:adv/core/constant/app_text_styles.dart';
-import 'package:flutter/material.dart';
-
+import 'package:adv/core/exports/ui_exports.dart';
 
 class AppSearchBar extends StatelessWidget {
   final FocusNode? focusNode;
@@ -15,6 +12,7 @@ class AppSearchBar extends StatelessWidget {
   final Color? iconColor;
   final Widget? crossIcon;
   final double? borderRadius;
+  final String? hintText;
   final List<BoxShadow>? boxShadow;
 
   const AppSearchBar({
@@ -30,6 +28,7 @@ class AppSearchBar extends StatelessWidget {
     this.iconColor,
     this.crossIcon,
     this.borderRadius,
+    this.hintText,
     this.boxShadow,
   });
 
@@ -44,7 +43,7 @@ class AppSearchBar extends StatelessWidget {
         boxShadow: boxShadow ??
             [
               BoxShadow(
-                color: Colors.black.withOpacity(0.05),
+                color: Colors.black.withOpacity(0.1),
                 blurRadius: 6,
                 offset: Offset(0, 3),
               )
@@ -55,20 +54,34 @@ class AppSearchBar extends StatelessWidget {
         controller: controller,
         onChanged: onChanged,
         decoration: InputDecoration(
-          hintText: 'Search ....',
-          hintStyle: AppTextStyles.hintText(context).copyWith(fontWeight: FontWeight.w400),
-          prefixIcon: Icon(
-            Icons.search,
-            color: iconColor ?? AppColor.darkGreyColor,
+          hintText: hintText ?? 'Search ....',
+          hintStyle: AppTextStyles.hintText(context)
+              .copyWith(fontWeight: FontWeight.w400),
+          prefixIcon: Padding(
+            padding: EdgeInsets.only(
+                left: 22.w, bottom: 18.h, top: 18.h, right: 8.w),
+            child: SvgPicture.asset(
+              AppAssets.searchIcon,
+              width: 13.w,
+              height: 13.h,
+            ),
           ),
-          suffixIcon: onClear == null
-              ? null
-              : IconButton(
+          // Icon(
+          //   Icons.search,
+          //   color: iconColor ?? AppColor.darkGreyColor,
+          // ),
+          suffixIcon:
+              // onClear == null
+              //     ? null
+              //     :
+              IconButton(
             icon: crossIcon ??
                 Icon(
                   Icons.close,
                   size: 20,
-                  color: iconColor ?? AppColor.darkGreyColor,
+                  color:
+                      // iconColor ??
+                      AppColor.darkGreyColor,
                 ),
             onPressed: onClear,
           ),

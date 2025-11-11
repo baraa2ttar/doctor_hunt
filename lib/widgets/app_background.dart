@@ -3,7 +3,14 @@ import 'package:adv/core/exports/ui_exports.dart';
 class AppBackground extends StatelessWidget {
   final Widget child;
   final EdgeInsets? padding;
-  const AppBackground({super.key, required this.child, this.padding,});
+  final ScrollPhysics? physics;
+  final Widget? drawer;
+  const AppBackground(
+      {super.key,
+      required this.child,
+      this.padding,
+      this.physics,
+      this.drawer});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +32,8 @@ class AppBackground extends StatelessWidget {
 
     return Scaffold(
       resizeToAvoidBottomInset: false,
-      body:  Stack(
+      drawer: drawer,
+      body: Stack(
         children: [
           Positioned(
             top: circleOffset,
@@ -38,9 +46,9 @@ class AppBackground extends StatelessWidget {
                 color: Colors.transparent,
                 boxShadow: [
                   BoxShadow(
-                    color:AppColor.lightblueColor ,
-                    blurRadius: circleSize * 0.5,
-                    spreadRadius: circleSize * 0.3,
+                    color: AppColor.shadowBlueColor,
+                    blurRadius: circleSize * 0.7,
+                    spreadRadius: circleSize * 0.5,
                   ),
                 ],
               ),
@@ -57,7 +65,7 @@ class AppBackground extends StatelessWidget {
                 color: Colors.transparent,
                 boxShadow: [
                   BoxShadow(
-                    color: AppColor.primaryColor.withValues(alpha: 0.3),
+                    color: AppColor.primaryColor.withOpacity(0.3),
                     blurRadius: circleSize * 0.5,
                     spreadRadius: circleSize * 0.3,
                   ),
@@ -68,11 +76,11 @@ class AppBackground extends StatelessWidget {
           SafeArea(
             child: SingleChildScrollView(
               padding: padding ?? EdgeInsets.all(context.pw(20)),
+              physics: physics,
               child: ConstrainedBox(
                 constraints: BoxConstraints(
                     minHeight: context.screenHeight,
-                    minWidth: context.screenWidth
-                ),
+                    minWidth: context.screenWidth),
                 child: child,
               ),
             ),

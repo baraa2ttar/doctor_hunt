@@ -4,10 +4,12 @@ class AppButton extends StatelessWidget {
   final double? buttonWidth;
   final double buttonHeight;
   final String buttonText;
+  final double borderRadius;
   final TextStyle textStyle;
   final Color? backgroundColor;
   final String? svgIcon;
   final VoidCallback onTap;
+  final BoxBorder? border;
 
 
   const AppButton({
@@ -18,7 +20,9 @@ class AppButton extends StatelessWidget {
     required this.buttonHeight,
     required this.buttonText,
     required this.textStyle,
-    required this.onTap
+    required this.onTap,
+    required this.borderRadius,
+    this.border
   });
 
 
@@ -30,15 +34,9 @@ class AppButton extends StatelessWidget {
           width: buttonWidth,
           height: buttonHeight,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(10),
+            border: border,
+            borderRadius: BorderRadius.circular(borderRadius),
             color: backgroundColor ?? AppColor.primaryColor,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.2),
-                blurRadius: 8,
-                offset: Offset(0, 4),
-              ),
-            ],
           ),
           child:  svgIcon != null ?
           Row(

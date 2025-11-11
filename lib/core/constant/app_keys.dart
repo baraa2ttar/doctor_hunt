@@ -1,0 +1,3 @@
+class AppKeys{
+  static const apiKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im55cG5hc3F2cG1qem5xcmJ3aHpsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTMxNzgzNzcsImV4cCI6MjA2ODc1NDM3N30.OKubjY4wG4LzEXwsK6-4Ah33CdnqlLTEp5vP4CRrhHk';
+}

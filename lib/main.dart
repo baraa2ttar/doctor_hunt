@@ -1,8 +1,12 @@
+import 'package:adv/core/bindings/initial_binding.dart';
 import 'package:adv/core/exports/main_exports.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp( MyApp());
+  InitialBinding().dependencies();
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -10,21 +14,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-        designSize: AppSize.designSize,
-        minTextAdapt: true,
-        builder: (context, child) {
-         return GetMaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'Graduation',
-            theme: ThemeData(
-              scaffoldBackgroundColor: AppColor.whiteColor,
-              fontFamily: 'Rubik',
-              useMaterial3: true,
+      designSize: AppSize.designSize,
+      minTextAdapt: true,
+      builder: (context, child) {
+        return AnnotatedRegion<SystemUiOverlayStyle>(
+            value: SystemUiOverlayStyle(
+              statusBarIconBrightness: Brightness.dark,
             ),
-            builder: (context, child) => responsiveBuilder(context, child,),
-            initialRoute: Routes.allRecord,
-            getPages: appPages,
-          );
-        }
-    );}
+            child: GetMaterialApp(
+              debugShowCheckedModeBanner: false,
+              title: 'Graduation',
+              theme: ThemeData(
+                scaffoldBackgroundColor: AppColor.whiteColor,
+                fontFamily: 'Rubik',
+                useMaterial3: true,
+              ),
+              builder: (context, child) => responsiveBuilder(context, child),
+              initialRoute: Routes.splash,
+              getPages: appPages,
+            ));
+      },
+    );
+  }
 }

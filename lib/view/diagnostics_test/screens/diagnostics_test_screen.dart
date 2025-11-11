@@ -3,85 +3,83 @@ import 'package:adv/core/exports/ui_exports.dart';
 class DiagnosticsTestScreen extends StatelessWidget {
   const DiagnosticsTestScreen({super.key});
 
-  void _showForgotPasswordSheet(BuildContext context) {
-    CustomBottomSheet.show(
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            'Forgot Password',
-            style: AppTextStyles.doctorNameText(context),
-          ),
-          const SizedBox(height: 16),
-          AppTextFormField(hintText: 'Enter your email'),
-          const SizedBox(height: 16),
-          AppButton(
-            onTap: () {
-              Get.back();
-              Get.snackbar('Success', 'Reset link sent!');
-            },
-            buttonText: 'Submit',
-            buttonHeight: 50,
-            textStyle: AppTextStyles.buttonText(context),
-          ),
-        ],
-      ), ShadowIsTrue: null,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return AppBackground(
       child: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AppTopBar(
-            onSearchTap: () {},
-            appBarText: "Select Item",
+          AppTopBar(appBarText: "Diagnostics Tests"),
+          SizedBox(height: 20.h),
+          Text(
+            AppStrings.diagnosticsTitle,
+            style: AppTextStyles.titleText(context),
           ),
-          SizedBox(height: context.h(20)),
-
-          AppTextFormField(hintText: "Hello"),
-
-          SizedBox(height: context.h(20)),
-
-          AppSearchBar(
-            // controller: myController,
-            // onChanged: (value) {
-            //   // Do search
-            // },
-            // onClear: () {
-            //   myController.clear();
-            // },
-            fillColor: Colors.white,
-            filled: true,
-            focusedBorder: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(12),
-              borderSide: BorderSide(color: AppColor.primaryColor),
-            ),
+          SizedBox(height: 10.h),
+          Text(
+            AppStrings.diagnosticsOff,
+            style: AppTextStyles.greenText(context),
           ),
-
-
-
-          SizedBox(height: context.h(20)),
-
-          AppButton(
-            onTap: () {},
-            buttonText: "Get Started",
-            buttonHeight: 54,
-            textStyle: AppTextStyles.buttonText(context),
-          ),
-
-
-          SizedBox(height: context.h(20)),
-          TextButton(
-            onPressed: () => _showForgotPasswordSheet(context),
-            child: Text(
-              'Forgot Password?',
-              style: AppTextStyles.buttonText(context)?.copyWith(
-                color: AppColor.primaryColor,
+          SizedBox(height: 20.h),
+          Row(
+            children: [
+              DiagnosticsContainer(
+                colorStart: AppColor.containerBlueColor,
+                colorEnd: AppColor.containerPurpleColor,
+                svgIcon: AppAssets.homeIcon,
+                text: AppStrings.diagnosticsFirstSection,
               ),
-            ),
+              Spacer(),
+              DiagnosticsContainer(
+                colorStart: AppColor.containerRedColor,
+                colorEnd: AppColor.containerOrangeColor,
+                svgIcon: AppAssets.listenIcon,
+                text: AppStrings.diagnosticsSecondSection,
+              ),
+            ],
+          ),
+          SizedBox(height: 30.h),
+
+          Row(
+            children: [
+              DiagnosticsContainer(
+                colorStart: AppColor.containerDarkOrangeColor,
+                colorEnd: AppColor.containerYellowColor,
+                svgIcon: AppAssets.timeIcon,
+                text: AppStrings.diagnosticsThirdSection,
+              ),
+              Spacer(),
+              DiagnosticsContainer(
+                colorStart: AppColor.containerDarkGreenColor,
+                colorEnd: AppColor.containerGreenColor,
+                svgIcon: AppAssets.lookIcon,
+                text: AppStrings.diagnosticsFourthSection,
+              ),
+            ],
+          ),
+          SizedBox(height: 30.h),
+          Text(AppStrings.recommended, style: AppTextStyles.doctorNameText(context).copyWith(fontWeight: FontWeight.w700),),
+          SizedBox(height: 20.h),
+          ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: diagnosticsList.length,
+            itemBuilder: (context, index) {
+              final item = diagnosticsList[index];
+              return Padding(
+                padding: EdgeInsets.only(bottom: 20.h), // spacing between cards
+                child: DiagnosticsCard(
+                  cardTitle: item['cardTitle'],
+                  cardSubtitle: item['cardSubtitle'],
+                  numberOfTests: item['numberOfTests'],
+                  image: item['image'],
+                  price: item['price'],
+                  offPrice: item['offPrice'],
+                  percentageOff: item['percentageOff'],
+                ),
+              );
+            },
           ),
 
         ],

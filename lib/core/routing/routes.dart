@@ -22,4 +22,16 @@ class Routes{
   static const String privacyPolicy = '/privacyPolicy';
   static const String doctors = '/doctors';
   static const String navbar = '/navbar';
+  static const String patientForm = '/patientForm';
+  static const String emptyDetails = '/emptyDetails';
+  static const String doctorAppointmentNext = '/doctorAppointmentNext';
+  static const String thankYouDialog = '/thankYouDialog';
+  static const String splash = '/splash';
+  static const String availableTime ='/availableTime';
+  static const String selectTime ='/doctor_select';
+  static const String location = '/location';
+  static const String diagnosticsInfo = '/diagnosticsInfo';
+  static const String chat = '/chat';
+  static const String orderList = '/orderList';
+
 }

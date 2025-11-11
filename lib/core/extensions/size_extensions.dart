@@ -23,6 +23,8 @@ extension SizeExtensions on BuildContext {
   double pw(double padding) => w(padding);
   double ph(double padding) => h(padding);
 
+   double get keyboardHeight => MediaQuery.of(this).viewInsets.bottom;
+
 
   double get screenWidth => MediaQuery.of(this).size.width;
   double get screenHeight => MediaQuery.of(this).size.height;

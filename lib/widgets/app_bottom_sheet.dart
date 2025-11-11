@@ -1,33 +1,60 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-bool ShadowIsTrue = false ;
+import 'package:adv/core/exports/ui_exports.dart';
+// For the first version (SafeArea, shadow, fixed height):
+// dart
+// Copy
+// Edit
+// CustomBottomSheet.show(
+//   child: YourWidget(),
+//   useSafeArea: true,
+//   height: 350.h,
+//   withShadow: true,
+//   barrierColor: Colors.transparent,
+// );
+// 2. For the second version (scrollable, dark background):
+// dart
+// Copy
+// Edit
+// CustomBottomSheet.show(
+//   child: YourWidget(),
+//   isScrollControlled: true,
+//   barrierColor: Colors.black.withOpacity(0.5),
+// );
+
+
 class CustomBottomSheet {
-  static Future<T?> show<T>({required Widget child,required ShadowIsTrue}) {
-    return Get.bottomSheet<T>(
-      Container(
-
-        padding: const EdgeInsets.all(20),
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.vertical(top: Radius.circular(30)),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black ,// Shadow color
-              spreadRadius: 2,                     // Spread radius
-              blurRadius: 10,                       // Blur radius
-              offset: const Offset(0,10),         // Offset for the shadow
-            ),
-          ],
-        ),
-        child: child,
+  static Future<T?> show<T>({
+    required Widget child,
+    bool useSafeArea = false,
+    bool isScrollControlled = false,
+    double? height,
+    Color? barrierColor,
+    Color backgroundColor = Colors.white,
+    bool withShadow = false,
+  }) {
+    Widget content = Container(
+      height: height,
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical:19.h ),
+      decoration: BoxDecoration(
+        color: backgroundColor,
+        boxShadow: withShadow
+            ? [
+                BoxShadow(
+                  blurRadius: 25,
+                  color: AppColor.blackColor.withOpacity(0.06),
+                ),
+              ]
+            : null,
+        borderRadius: const BorderRadius.vertical(top: Radius.circular(30)),
       ),
-      isScrollControlled: true,
+      child: child,
+    );
 
+    return Get.bottomSheet<T>(
+      useSafeArea ? SafeArea(child: content) : content,
+      isScrollControlled: isScrollControlled,
       backgroundColor: Colors.transparent,
-      barrierColor:
-      ShadowIsTrue == true ?
-      Colors.black
-           : Colors.transparent,
+      barrierColor: barrierColor ?? Colors.black.withOpacity(0.5),
     );
   }
 }

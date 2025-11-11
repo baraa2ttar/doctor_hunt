@@ -6,29 +6,27 @@ class AddMore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 100,
-      height: 125,
-
+      width: 100.w,
+      height: 125.h,
       decoration: BoxDecoration(
-
           borderRadius: BorderRadius.all(
             Radius.circular(6.0),
           ),
-          color: AppColor.lightgreenColor
-      ),
+          color: AppColor.primaryColor.withOpacity(0.2)),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-
-          Padding(
-            padding: const EdgeInsets.all(6.0),
-            child: Icon(Icons.add, size: 50,color: AppColor.primaryColor,),
+          SizedBox(height: 20.h),
+          Icon(Icons.add, size: 50, color: AppColor.primaryColor),
+          Text(
+            "Add more images",
+            textAlign: TextAlign.center,
+            style: AppTextStyles.title(context)
+                .copyWith(height: 1.1.h, color: AppColor.primaryColor),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text( "Add more images ",textAlign: TextAlign.center,style: TextStyle(color: AppColor.primaryColor,fontSize: 16),),
-          )
-        ],),
+          SizedBox(height: 13.h)
+        ],
+      ),
     );
   }
 }
